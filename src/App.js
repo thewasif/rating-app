@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Home from './Home';
+import Ranks from './Ranks';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Menu, Icon } from 'antd';
+import "antd/dist/antd.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component{
+  
+  render(){
+    return(
+      <div>
+        <Menu mode="horizontal"  className="menu-style">
+              <Menu.Item onClick={() => window.location = '/'} className="menu-style">
+                  <Icon type="home" /> Home
+              </Menu.Item>
+              <Menu.Item onClick={() => window.location = '/ranks'} className="menu-style" >
+                  <Icon type="line-chart"  /> Ranks
+              </Menu.Item>
+        </Menu>
+      <Router>
+        
+        <div>
+          <Route path="/" exact component={Home} />
+          <Route path="/ranks" exact component={Ranks} />
+        </div>
+      </Router>
+      </div>
+    );
+  }
+} 
+
 
 export default App;
